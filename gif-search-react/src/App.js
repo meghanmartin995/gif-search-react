@@ -3,10 +3,19 @@ import Header from './Header';
 import './css/main.css';
 
 class App extends Component {
+
+
   handleChange = event => {
     const {value} = event.target
     if (value.length > 2) {
       console.log("search term")
+    }
+  }
+
+  handleKeyPress = event => {
+    const {value} = event.target
+    if (value.length > 2 && event.key === 'Enter'){
+      alert(`search for ${value}`)
     }
   }
 
@@ -16,7 +25,11 @@ class App extends Component {
         <Header />
         <div className='search grid'>
           {}
-          <input className='input grid-item' placeholder='Type something' onChange={this.handleChange}/>
+          <input
+            className='input grid-item'
+            placeholder='Type something'
+            onChange={this.handleChange}
+            onKeyPress={this.handleKeyPress}/>
         </div>
       </div>
     );
