@@ -7,6 +7,10 @@ class App extends Component {
     return (
       <div className="page">
         <Header />
+        <div className='search grid'>
+          {}
+          <input className='input grid-item' placeholder='Type something'/>
+        </div>
       </div>
     );
   }
