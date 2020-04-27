@@ -1,6 +1,15 @@
 import React, {Component} from 'react';
 import Header from './Header';
 import './css/main.css';
+import loader from './images/loader.svg'
+
+const UserHint = ({loading, hintText}) => (
+  <div className="user-hint">
+    {loading ?
+      <img src={loader} alt="loading" className="block mx-auto" /> :
+      hintText
+  }</div>
+)
 
 class App extends Component {
 
@@ -16,11 +25,9 @@ class App extends Component {
     const {value} = event.target
     this.setState((prevState, props) => ({
       ...prevState,
-      searchTerm: value
+      searchTerm: value,
+      hintText: `Hit enter to search ${value}`
     }))
-    if (value.length > 2) {
-      console.log("search term")
-    }
   }
 
   handleKeyPress = event => {
@@ -44,6 +51,7 @@ class App extends Component {
             onKeyPress={this.handleKeyPress}
             value={searchTerm}/>
         </div>
+        <UserHint {...this.state}/>
       </div>
     );
   }
