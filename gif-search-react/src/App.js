@@ -26,7 +26,7 @@ class App extends Component {
     this.setState((prevState, props) => ({
       ...prevState,
       searchTerm: value,
-      hintText: `Hit enter to search ${value}`
+      hintText: value.length > 2 ? `Hit enter to search ${value}` : ''
     }))
   }
 
