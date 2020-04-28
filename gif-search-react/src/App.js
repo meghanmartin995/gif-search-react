@@ -23,7 +23,8 @@ class App extends Component {
     this.state = {
       searchTerm: '',
       hintText: '',
-      gif: null
+      gif: null,
+      gifs: []
     };
   }
 
@@ -39,7 +40,8 @@ class App extends Component {
 
       this.setState((prevState, props) => ({
         ...prevState,
-        gif: randomGif
+        gif: randomGif,
+        gifs: [...prevState.gifs, randomGif]
       }))
 
     } catch (error) {}
@@ -69,13 +71,12 @@ class App extends Component {
         <Header />
         <div className='search grid'>
           {}
-          {gif && (
-          <video
+          {this.state.gifs.map(gif =>
+            <video
             className='grid-item video'
             autoPlay
             loop
-            src={gif.images.original.mp4}
-          />
+            src={gif.images.original.mp4}/>
           )}
           <input
             className='input grid-item'
