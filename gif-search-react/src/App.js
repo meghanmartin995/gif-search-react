@@ -24,7 +24,7 @@ class App extends Component {
   searchGiphy = async searchTerm => {
     try {
       const response = await fetch(
-        'https://api.giphy.com/v1/gifs/search?api_key=l4j1bLLlYYlv7btc04P3TBEDaNZIAfCr&q=dogs&limit=25&offset=0&rating=PG&lang=en'
+        `https://api.giphy.com/v1/gifs/search?api_key=l4j1bLLlYYlv7btc04P3TBEDaNZIAfCr&q=${searchTerm}&limit=25&offset=0&rating=PG&lang=en`
       );
       const data = await response.json();
       console.log(data)
