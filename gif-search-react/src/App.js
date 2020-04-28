@@ -3,6 +3,11 @@ import Header from './Header';
 import './css/main.css';
 import loader from './images/loader.svg'
 
+const randomChoice = arr => {
+  const randIndex = Math.floor(Math.random() * arr.length);
+  return arr[randIndex]
+}
+
 const UserHint = ({loading, hintText}) => (
   <div className="user-hint">
     {loading ?
