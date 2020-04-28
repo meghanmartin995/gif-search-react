@@ -22,6 +22,7 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      loading: false,
       searchTerm: '',
       hintText: '',
       gif: null,
@@ -45,7 +46,8 @@ class App extends Component {
       this.setState((prevState, props) => ({
         ...prevState,
         gif: randomGif,
-        gifs: [...prevState.gifs, randomGif]
+        gifs: [...prevState.gifs, randomGif],
+        loading: false
       }))
 
     } catch (error) {}
