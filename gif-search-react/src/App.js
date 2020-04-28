@@ -40,8 +40,11 @@ class App extends Component {
       );
       const {data} = await response.json();
 
+      if (!data.length) {
+        throw `Nothing found for ${searchTerm}`
+      }
+
       const randomGif = randomChoice(data)
-      console.log(randomGif)
 
       this.setState((prevState, props) => ({
         ...prevState,
@@ -50,7 +53,14 @@ class App extends Component {
         loading: false
       }))
 
-    } catch (error) {}
+    } catch (error) {
+      this.setState((prevState, props) => ({
+        ...prevState,
+        hintText: error,
+        loading: false
+      }));
+      console.log(error)
+    }
   }
 
 
