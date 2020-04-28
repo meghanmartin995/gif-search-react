@@ -55,12 +55,20 @@ class App extends Component {
   }
 
   render() {
-    const { searchTerm } = this.state
+    const { searchTerm, gif } = this.state
     return (
       <div className="page">
         <Header />
         <div className='search grid'>
           {}
+          {gif && (
+          <video
+            className='grid-item video'
+            autoPlay
+            loop
+            src={gif.images.original.mp4}
+          />
+          )}
           <input
             className='input grid-item'
             placeholder='Type something'
