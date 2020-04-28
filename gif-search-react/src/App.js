@@ -34,9 +34,12 @@ class App extends Component {
       );
       const {data} = await response.json();
 
+      const randomGif = randomChoice(data)
+      console.log(randomGif)
+
       this.setState((prevState, props) => ({
         ...prevState,
-        gif: data[0]
+        gif: randomGif
       }))
 
     } catch (error) {}
