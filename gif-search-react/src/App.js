@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Header from './Header';
+import Gif from './Gif';
 import './css/main.css';
 import loader from './images/loader.svg'
 
@@ -72,11 +73,7 @@ class App extends Component {
         <div className='search grid'>
           {}
           {this.state.gifs.map(gif =>
-            <video
-            className='grid-item video'
-            autoPlay
-            loop
-            src={gif.images.original.mp4}/>
+            <Gif {...gif}/>
           )}
           <input
             className='input grid-item'
