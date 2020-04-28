@@ -50,7 +50,8 @@ class App extends Component {
         ...prevState,
         gif: randomGif,
         gifs: [...prevState.gifs, randomGif],
-        loading: false
+        loading: false,
+        hintText: `Hint enter to see more ${searchTerm}`
       }))
 
     } catch (error) {
