@@ -17,8 +17,9 @@ class App extends Component {
     super(props)
     this.state = {
       searchTerm: '',
-      hintText: ''
-    }
+      hintText: '',
+      gif: null
+    };
   }
 
   searchGiphy = async searchTerm => {
@@ -26,8 +27,13 @@ class App extends Component {
       const response = await fetch(
         `https://api.giphy.com/v1/gifs/search?api_key=l4j1bLLlYYlv7btc04P3TBEDaNZIAfCr&q=${searchTerm}&limit=25&offset=0&rating=PG&lang=en`
       );
-      const data = await response.json();
-      console.log(data)
+      const {data} = await response.json();
+
+      this.setState((prevState, props) => ({
+        ...prevState,
+        gif: data[0]
+      }))
+
     } catch (error) {}
   }
 
