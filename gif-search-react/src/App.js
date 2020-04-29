@@ -32,6 +32,7 @@ class App extends Component {
 
   constructor(props) {
     super(props)
+    this.textInput = React.createRef();
     this.state = {
       loading: false,
       searchTerm: '',
@@ -98,6 +99,7 @@ class App extends Component {
       hintText: '',
       gifs: []
     }))
+    this.textInput.current.focus();
   }
 
   render() {
@@ -116,6 +118,7 @@ class App extends Component {
             placeholder='Type something'
             onChange={this.handleChange}
             onKeyPress={this.handleKeyPress}
+            ref={this.textInput}
             value={searchTerm}/>
         </div>
         <UserHint {...this.state}/>
