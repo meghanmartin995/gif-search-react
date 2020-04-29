@@ -2,11 +2,11 @@ import React, {Component} from 'react';
 import Gif from './Gif';
 import './css/main.css';
 import loader from './images/loader.svg'
+import clearButton from './images/close-icon.svg'
 
-
-const Header = ({clearSearch}) => (
+const Header = ({clearSearch, hasResults}) => (
   <div className="header grid">
-    <h1 className="title" onClick={clearSearch}>Jiffy</h1>
+    {hasResults ? <img src={clearButton}/> : <h1 className="title" onClick={clearSearch}>Jiffy</h1> }
   </div>
 )
 
@@ -96,10 +96,11 @@ class App extends Component {
   }
 
   render() {
-    const { searchTerm, gif } = this.state
+    const { searchTerm, gifs } = this.state
+    const hasResults = gifs.length
     return (
       <div className="page">
-        <Header clearSearch={this.clearSearch}/>
+        <Header clearSearch={this.clearSearch} hasResults={hasResults}/>
         <div className='search grid'>
           {}
           {this.state.gifs.map(gif =>
