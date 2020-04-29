@@ -1,8 +1,14 @@
 import React, {Component} from 'react';
-import Header from './Header';
 import Gif from './Gif';
 import './css/main.css';
 import loader from './images/loader.svg'
+
+
+const Header = ({clearSearch}) => (
+  <div className="header grid">
+    <h1 className="title" onClick={clearSearch}>Jiffy</h1>
+  </div>
+)
 
 const randomChoice = arr => {
   const randIndex = Math.floor(Math.random() * arr.length);
@@ -81,11 +87,19 @@ class App extends Component {
     }
   }
 
+  clearSearch = () => {
+    this.setState((prevState, props) => ({
+      searchTerm: '',
+      hintText: '',
+      gifs: []
+    }))
+  }
+
   render() {
     const { searchTerm, gif } = this.state
     return (
       <div className="page">
-        <Header />
+        <Header clearSearch={this.clearSearch}/>
         <div className='search grid'>
           {}
           {this.state.gifs.map(gif =>
