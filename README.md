@@ -1,4 +1,4 @@
-#🚀 React app to search for gifs via Giphy's API 
+🚀 # React app to search for gifs via Giphy's API 
 
 jiffy-search-react.netlify.app
 
