@@ -1,12 +1,17 @@
 import React, {Component} from 'react';
 import Gif from './Gif';
 import './css/main.css';
-import loader from './images/loader.svg'
-import clearButton from './images/close-icon.svg'
+import loader from './images/loader.svg';
+import clearButton from './images/close-icon.svg';
 
 const Header = ({clearSearch, hasResults}) => (
   <div className="header grid">
-    {hasResults ? <img src={clearButton}/> : <h1 className="title" onClick={clearSearch}>Jiffy</h1> }
+    {hasResults ? (
+      <button onClick={clearSearch}>
+        <img src={clearButton}  alt="clear button" />
+      </button>
+    ) : (
+      <h1 className="title" onClick={clearSearch}>Jiffy</h1>)}
   </div>
 )
 
